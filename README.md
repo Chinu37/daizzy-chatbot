@@ -1,11 +1,39 @@
+# Daizzy AI Chatbot — Velour Luxury E-commerce
 
-  # Luxury E-commerce AI Assistant
+An AI-powered luxury fashion chatbot built with React + Python FastAPI + SQLite.
 
-  This is a code bundle for Luxury E-commerce AI Assistant. The original project is available at https://www.figma.com/design/8DZoLY5gL9ee5lpocscPaU/Luxury-E-commerce-AI-Assistant.
+## Features
+- AI Chat powered by Groq (LLaMA 3.3)
+- User Authentication (Register/Login)
+- Product Catalog with smart filtering
+- Cart & Checkout
+- Order Management & Tracking
+- Outfit Builder
+- Style Quiz
+- Gamification & Rewards
+- Customer Support
 
-  ## Running the code
+## Tech Stack
+**Frontend:** React, TypeScript, TailwindCSS, Vite  
+**Backend:** Python, FastAPI, SQLAlchemy, SQLite  
+**AI:** Groq API (LLaMA 3.3-70b)
 
-  Run `npm i` to install the dependencies.
+## Setup
 
-  Run `npm run dev` to start the development server.
-  
+### Backend
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8001
+```
+
+### Frontend
+```bash
+npm install
+npm run dev
+```
+
+## Environment Variables
+Create `backend/.env`:
