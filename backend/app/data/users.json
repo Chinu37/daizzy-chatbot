@@ -1,0 +1,26 @@
+[
+  {
+    "id": "7bde064a-9edc-423e-b5f9-46fb62f4e85a",
+    "name": "Test User",
+    "email": "test@example.com",
+    "phone": "9876543210",
+    "address": "Mumbai, Maharashtra",
+    "password": "ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae"
+  },
+  {
+    "id": "09d969ad-4568-49c2-82bf-eea7f617eacd",
+    "name": "Chinmay",
+    "email": "chinmaykale@gmail.com",
+    "phone": "9324777348",
+    "address": "Kalyan west",
+    "password": "983ae38dfde985272de65ce5628911d586eb814b5a6322ddcdce0451300fbcb4"
+  },
+  {
+    "id": "7443ce22-ae4c-410b-b48b-bf50c7710042",
+    "name": "Chinmay",
+    "email": "chinmaykale998@gmail.com",
+    "phone": "9324777348",
+    "address": "Kalyan west",
+    "password": "983ae38dfde985272de65ce5628911d586eb814b5a6322ddcdce0451300fbcb4"
+  }
+]

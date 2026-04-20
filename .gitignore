@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+venv/
+
+# Database
+backend/app/data/*.db
+
+# Environment
+.env
+*.env
+
+# Build
+dist/
+build/
+
+# Mac files
+.DS_Store
+__MACOSX/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+*.lognode_modules
+
+backend/.env

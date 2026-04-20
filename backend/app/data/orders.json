@@ -1,0 +1,102 @@
+[
+  {
+    "id": "cb7886a0-42a2-49aa-8c7b-73bac25a21e1",
+    "user_id": "7bde064a-9edc-423e-b5f9-46fb62f4e85a",
+    "items": [
+      {
+        "product_id": "fw_top_1",
+        "name": "Bridal Ivory Silk Blouse",
+        "price": 4890.0,
+        "image": "https://images.unsplash.com/photo-1564859228273-274232fdb516?w=400&h=600&fit=crop",
+        "category": "top",
+        "quantity": 1
+      }
+    ],
+    "address": "Mumbai, Maharashtra",
+    "payment_method": "COD",
+    "total": 4890.0,
+    "status": "confirmed",
+    "created_at": "2026-04-16T06:54:47.998588"
+  },
+  {
+    "id": "fdf97785-5015-458c-b47d-ee7f3fb01b91",
+    "user_id": "guest",
+    "items": [
+      {
+        "product_id": "fp_top_1",
+        "name": "Black Satin Camisole",
+        "price": 3290.0,
+        "image": "https://images.unsplash.com/photo-1581338834647-b0fb40704e21?w=400&h=600&fit=crop",
+        "category": "top",
+        "quantity": 1
+      },
+      {
+        "product_id": "fc_top_4",
+        "name": "Denim Jacket",
+        "price": 3290.0,
+        "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=600&fit=crop",
+        "category": "top",
+        "quantity": 1
+      },
+      {
+        "product_id": "fw_watch_1",
+        "name": "Rose Gold Diamond Watch",
+        "price": 18990.0,
+        "image": "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=400&h=600&fit=crop",
+        "category": "watch",
+        "quantity": 1
+      }
+    ],
+    "address": "Chinmay, Kalyan west, Kalyan - 421301, Phone: 9324777348",
+    "payment_method": "COD",
+    "total": 25570.0,
+    "status": "confirmed",
+    "created_at": "2026-04-18T09:01:43.721616"
+  },
+  {
+    "id": "df3e107e-7cde-46c7-af47-4c2748cddd22",
+    "user_id": "guest",
+    "items": [
+      {
+        "product_id": "fw_dress_2",
+        "name": "Gold Embroidered Lehenga Set",
+        "price": 22990.0,
+        "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&h=600&fit=crop",
+        "category": "dress",
+        "quantity": 1
+      }
+    ],
+    "address": "Chinmay, milind nagar, Kalyan west - 421301, Phone: 9324777348",
+    "payment_method": "COD",
+    "total": 22990.0,
+    "status": "confirmed",
+    "created_at": "2026-04-18T12:36:43.297081"
+  },
+  {
+    "id": "8e31a4a5-3e20-472e-932e-c4c86f871414",
+    "user_id": "7443ce22-ae4c-410b-b48b-bf50c7710042",
+    "items": [
+      {
+        "product_id": "fp_bot_2",
+        "name": "Red Sequin Pants",
+        "price": 4290.0,
+        "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&h=600&fit=crop",
+        "category": "bottom",
+        "quantity": 1
+      },
+      {
+        "product_id": "fp_dress_3",
+        "name": "Red Velvet Mini Dress",
+        "price": 4890.0,
+        "image": "https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=400&h=600&fit=crop",
+        "category": "dress",
+        "quantity": 1
+      }
+    ],
+    "address": "Chinmay, Milind Nagar, Kalyan - 421301, Phone: 9324777348",
+    "payment_method": "COD",
+    "total": 9180.0,
+    "status": "confirmed",
+    "created_at": "2026-04-18T12:41:08.511936"
+  }
+]
