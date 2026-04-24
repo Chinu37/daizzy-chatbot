@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import { X, ChevronRight, ChevronDown, MessageCircle, Mail, Phone, Package, RefreshCw, CreditCard, Shirt, HelpCircle, Send, CheckCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+
 
 interface CustomerSupportProps {
   onClose: () => void;
@@ -52,15 +53,31 @@ export function CustomerSupport({ onClose, userEmail }: CustomerSupportProps) {
   const [formData, setFormData] = useState({ name: '', email: userEmail || '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = () => {
-    if (!formData.name || !formData.email || !formData.message) return;
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setShowContactForm(false);
-      setFormData({ name: '', email: userEmail || '', subject: '', message: '' });
-    }, 3000);
-  };
+  const handleSubmit = async () => {
+  if (!formData.name || !formData.email || !formData.message) return;
+  try {
+    const userId = localStorage.getItem('daizzy_user_id') || 'guest';
+    await fetch('http://localhost:8001/support/ticket', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_id: userId,
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message
+      })
+    });
+  } catch (error) {
+    console.error('Support ticket error:', error);
+  }
+  setSubmitted(true);
+  setTimeout(() => {
+    setSubmitted(false);
+    setShowContactForm(false);
+    setFormData({ name: '', email: userEmail || '', subject: '', message: '' });
+  }, 3000);
+};
 
   return (
     <div className="fixed inset-0 z-50 bg-[var(--velour-ivory)] flex flex-col">

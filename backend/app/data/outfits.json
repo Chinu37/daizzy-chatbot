@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "id": "5d2af097-9ef9-423f-99ca-be57e87a336c",
+    "user_id": "fa500968-58b3-4f1d-a7de-b1dde3def45d",
+    "name": "Men casual Outfit",
+    "occasion": "casual",
+    "items": [
+      "m_bottom_2",
+      "m_top_2",
+      "m_shoes_1"
+    ]
+  },
+  {
+    "id": "8b268b37-154d-419d-8b5d-9b16f0c78de3",
+    "user_id": "fa500968-58b3-4f1d-a7de-b1dde3def45d",
+    "name": "Men casual Outfit",
+    "occasion": "casual",
+    "items": [
+      "m_bottom_4",
+      "m_top_4",
+      "m_shoes_2"
+    ]
+  }
+]

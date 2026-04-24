@@ -167,9 +167,33 @@ export function OutfitBuilder({ onCoinsUpdate, onAddToCart }: OutfitBuilderProps
       setRecommendedOutfit(outfit);
     }
 
-    setStep('result');
-    onCoinsUpdate?.(-OUTFIT_CREATION_COST);
-    setIsGenerating(false);
+    // Save outfit to backend
+try {
+  const userId = localStorage.getItem('daizzy_user_id') || 'guest';
+  const hasWedding = selectedCategories.includes('accessories');
+  const occasion = hasWedding ? 'wedding' : 'casual';
+  const itemsToSave = selectedCategories.map(categoryId => {
+    const categoryLabel = categories.find(c => c.id === categoryId)?.label;
+    const preferredColor = colorPreferences[categoryId];
+    return productCatalog.find(p => p.category === categoryLabel && p.gender === gender && p.color === preferredColor);
+  }).filter(Boolean) as OutfitItem[];
+  await fetch('http://localhost:8001/outfit/save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      user_id: userId,
+      name: `${gender === 'female' ? 'Women' : 'Men'} ${occasion} Outfit`,
+      occasion: occasion,
+      items: itemsToSave.map(item => item.id)
+    })
+  });
+} catch (error) {
+  console.error('Save outfit error:', error);
+}
+
+setStep('result');
+onCoinsUpdate?.(-OUTFIT_CREATION_COST);
+setIsGenerating(false);
   };
 
   const getTotalPrice = () => recommendedOutfit.reduce((total, item) => total + item.price, 0);

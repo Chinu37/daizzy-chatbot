@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from app.models.user import UserRegister, UserLogin, UserResponse
 from app.services.user_service import UserService
+from app.core.database import SessionLocal, UserDB
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 user_service = UserService()
@@ -38,3 +39,24 @@ def login(data: UserLogin):
             "address": user["address"]
         }
     }
+
+@router.get("/users")
+def get_all_users():
+    db = SessionLocal()
+    try:
+        from app.core.database import UserDB
+        users = db.query(UserDB).all()
+        return {
+            "success": True,
+            "count": len(users),
+            "users": [{
+                "id": u.id,
+                "name": u.name,
+                "email": u.email,
+                "phone": u.phone,
+                "address": u.address,
+                "created_at": u.created_at.isoformat()
+            } for u in users]
+        }
+    finally:
+        db.close()

@@ -49,7 +49,10 @@ export function DaizzyAssistant() {
   const [showWelcome, setShowWelcome] = useState(true);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
-  const [velourCoins, setVelourCoins] = useState(850);
+  const [velourCoins, setVelourCoins] = useState(() => {
+  const saved = localStorage.getItem('daizzy_coins');
+  return saved ? parseInt(saved) : 850;
+});
   const [showAdvancedFlow, setShowAdvancedFlow] = useState(false);
   const [showGamification, setShowGamification] = useState(false);
   const [showFullChat, setShowFullChat] = useState(false);
@@ -58,12 +61,21 @@ export function DaizzyAssistant() {
   const [showOrderTracking, setShowOrderTracking] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [user, setUser] = useState<{ name: string; email: string; phone: string } | null>(null);
+  const [user, setUser] = useState<{ name: string; email: string; phone: string } | null>(() => {
+  const saved = localStorage.getItem('daizzy_user');
+  return saved ? JSON.parse(saved) : null;
+});
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef<any>(null);
 
-  const handleCoinsUpdate = (change: number) => setVelourCoins(prev => prev + change);
+  const handleCoinsUpdate = (change: number) => {
+  setVelourCoins(prev => {
+    const newCoins = prev + change;
+    localStorage.setItem('daizzy_coins', newCoins.toString());
+    return newCoins;
+  });
+};
 
   const addToCart = (product: { id: string; name: string; price: number; image: string; category: string }) => {
     setCartItems(prev => {
@@ -215,7 +227,7 @@ export function DaizzyAssistant() {
                     <User className="w-3.5 h-3.5 text-[var(--velour-gold)]" />
                     <span className="text-sm text-[var(--velour-text)]">{user.name.split(' ')[0]}</span>
                   </div>
-                  <button onClick={() => setUser(null)} className="p-1.5 hover:bg-red-50 rounded-full transition-all">
+                  <button onClick={() => { setUser(null); localStorage.removeItem('daizzy_user'); localStorage.removeItem('daizzy_user_id'); }} className="p-1.5 hover:bg-red-50 rounded-full transition-all">
                     <LogOut className="w-4 h-4 text-red-400" />
                   </button>
                 </div>
@@ -467,7 +479,7 @@ export function DaizzyAssistant() {
       {showGamification && <GamificationRewards onClose={() => setShowGamification(false)} currentCoins={velourCoins} onCoinsUpdate={handleCoinsUpdate} />}
       {showFullChat && <DaizzyFullChat onClose={() => setShowFullChat(false)} onAddToCart={addToCart} />}
       {showCart && <CartCheckout onClose={() => setShowCart(false)} availableCoins={velourCoins} onCoinsUpdate={handleCoinsUpdate} cartItems={cartItems} setCartItems={setCartItems} onAddToCart={addToCart} />}
-      {showAuth && <AuthModal onClose={() => setShowAuth(false)} onLoginSuccess={(userData) => { setUser(userData); setShowAuth(false); }} />}
+      {showAuth && <AuthModal onClose={() => setShowAuth(false)} onLoginSuccess={(userData) => { setUser(userData); localStorage.setItem('daizzy_user', JSON.stringify(userData)); setShowAuth(false); }} />}
       {showOrderTracking && <OrderTracking onClose={() => setShowOrderTracking(false)} userEmail={user?.email} />}
       {showSupport && <CustomerSupport onClose={() => setShowSupport(false)} userEmail={user?.email} />}
     </>
